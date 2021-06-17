@@ -37,7 +37,7 @@
             <a class="nav-link" href="{{ route("createPost") }}">Create Post</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="#">Admin Control</a>
+            <a class="nav-link" href="{{ route("admin.index") }}">Admin Control</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route("contactUs") }}">Contact Us</a>
@@ -61,7 +61,23 @@
         </div>
     </nav>
   <!--/.Navbar -->
-    @yield('content')
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-md-4">
+                <ul class="list-group">
+                    <a  href="{{ route("admin.manage_premium_user") }}" class="list-group-item">Manage Premium Users</a>
+                    <a  href="{{ route("admin.contact_message") }}" class="list-group-item">Contact Messages</a>
+                </ul>
+            </div>
+            <div class="col-md-8">
+                @yield('content')
+            </div>
+        </div>
+    </div>
+
+
+
+    
     
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

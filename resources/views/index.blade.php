@@ -7,6 +7,7 @@
     <div class="container">
         <h1 class="mt-3">All Posts</h1>
         <div class="row mt-3">
+            @foreach (range(1,10) as $item)
             <div class="col-md-4 mt-3">
                 <!-- Card -->
                 <div class="card">
@@ -36,6 +37,8 @@
                 </div>
                 <!-- Card -->
             </div>
+            @endforeach
+            
         </div>
     </div>
 @endsection

@@ -4,6 +4,7 @@
         <div class="row">
             <div class="col-md-6">
                 {{-- Map --}}
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d488799.4874426368!2d95.90137530340911!3d16.838952487010044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1949e223e196b%3A0x56fbd271f8080bb4!2sYangon%2C%20Myanmar%20(Burma)!5e0!3m2!1sen!2sus!4v1623940348993!5m2!1sen!2sus" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
             <div class="col-md-6">
                 <!-- Default form login -->
