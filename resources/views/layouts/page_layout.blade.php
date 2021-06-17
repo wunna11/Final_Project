@@ -37,7 +37,7 @@
             <a class="nav-link" href="{{ route("createPost") }}">Create Post</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="#">Admin Control</a>
+            <a class="nav-link" href="{{ route("admin.index") }}">Admin Control</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route("contactUs") }}">Contact Us</a>
