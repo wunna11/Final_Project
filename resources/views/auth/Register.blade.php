@@ -13,7 +13,7 @@
                 <div class="card-body px-lg-5 pt-0">
 
                     <!-- Form -->
-                    <form class="text-center" style="color: #757575;" action="{{ route("post_register") }}" method="post">
+                    <form class="text-center" style="color: #757575;" action="{{ route("post_register") }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="md-form">
                                 <!-- First name -->
