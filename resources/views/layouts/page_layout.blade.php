@@ -54,7 +54,7 @@
             <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
                 aria-labelledby="navbarDropdownMenuLink-55">
                 <a class="dropdown-item" href="{{ route("userProfile") }}">User Profile</a>
-                <a class="dropdown-item" href="#">Logout</a>
+                <a class="dropdown-item" href="{{ route("logout") }}">Logout</a>
             </div>
             </li>
         </ul>

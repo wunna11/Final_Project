@@ -1,5 +1,6 @@
 @extends('layouts.page_layout')
 @section('content')
+<h1>{{ auth()->user()->name }}</h1> 
 {{-- background image --}}
     <header></header>
 

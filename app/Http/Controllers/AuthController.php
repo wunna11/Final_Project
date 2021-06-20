@@ -76,4 +76,9 @@ class AuthController extends Controller
     //     $username = request("username");
     //     return $username;
     // }
+
+    function logout() {
+        Auth::logout();
+        return redirect()->route("login");
+    }
 }
