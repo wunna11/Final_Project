@@ -64,8 +64,12 @@ class AuthController extends Controller
             $user->password = Hash::make($password);
             $user->image = $image_name;
             $user->save();
-
-            return redirect()->route("home");
+            //svae 1 second or 2 seconds to database so redirect login page.
+            //so if auth email and password 
+            if(Auth::attempt(["email"=>request('email'), "password"=>request('password')])) {
+                return redirect()->route("home");
+            }
+            
          } else {
              return back()->withErrors($validation);
          }

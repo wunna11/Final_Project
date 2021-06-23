@@ -17,7 +17,7 @@
                         @csrf
                         <div class="md-form">
                                 <!-- First name -->
-                            <input type="text" id="materialRegisterFormFirstName" class="form-control" name="username">
+                            <input type="text" class="form-control" name="username">
                             @error('username')
                                 <p class="text-danger">{{$message}}</p>
                             @enderror
