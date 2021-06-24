@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class PageController extends Controller
 {
     function index() {
-        $posts = Post::all();
+        $posts = Post::latest()->get();         //order by id desecnding
         return view('index', ['posts' => $posts]);          //view(blade file, array)
     }
 
@@ -63,6 +63,28 @@ class PageController extends Controller
 
     // notification
     function post() {
-        return redirect()->route("home")->with("message", "Added a post");
+        $validation = request()->validate([
+            "title" => "required",
+            "image" => "required",
+            "content" => "required",
+        ]);
+
+        if($validation) {
+            $title = request('title');
+            $image = request('image');
+            $content = request('content');
+            //save data to database
+            $post = new Post();
+            $post->user_id = auth()->user()->id;
+            $post->title = $title;
+            $imageName = uniqid()."_".$image->getClientOriginalName();
+            $image->move(public_path("images/posts/"), $imageName);
+            $post->image = $imageName;
+            $post->content = $content;
+            $post->save();
+            return redirect()->route("home")->with("message", "Added a post");
+        } else {
+            return back()->withErrors($validation);
+        }
     }
 }

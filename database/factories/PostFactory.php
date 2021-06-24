@@ -23,7 +23,7 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory(),
+            'user_id' => User::factory(),       //if post create, user_id will create
             'title' => $this->faker->title(),
             'image' => $this->faker->sentence(),
             'content' => $this->faker->sentence(),
