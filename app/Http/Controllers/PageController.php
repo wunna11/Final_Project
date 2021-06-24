@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -9,7 +10,8 @@ use Illuminate\Support\Facades\Hash;
 class PageController extends Controller
 {
     function index() {
-        return view('index');
+        $posts = Post::all();
+        return view('index', ['posts' => $posts]);          //view(blade file, array)
     }
 
     function createPost() {

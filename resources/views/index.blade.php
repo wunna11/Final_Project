@@ -8,7 +8,7 @@
     <div class="container">
         <h1 class="mt-3">All Posts</h1>
         <div class="row mt-3">
-            @foreach (range(1,10) as $item)
+            @foreach ($posts as $post)
             <div class="col-md-4 mt-3">
                 <!-- Card -->
                 <div class="card">
@@ -26,10 +26,9 @@
                     <div class="card-body">
                 
                     <!-- Title -->
-                    <h4 class="card-title">Card title</h4>
+                    <h4 class="card-title">{{$post->title}}</h4>
                     <!-- Text -->
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                        content.</p>
+                    <p class="card-text">{{$post->content}}</p>
                     <!-- Button -->
                     <a href="#" class="btn btn-primary">Button</a>
                 
