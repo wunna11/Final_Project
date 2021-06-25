@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class PageController extends Controller
 {
+    //post 
     function index() {
         $posts = Post::latest()->get();         //order by id desecnding
         return view('index', ['posts' => $posts]);          //view(blade file, array)
@@ -18,6 +19,19 @@ class PageController extends Controller
         return view('user.create');
     }
 
+    //show post detail
+    function showPostById($id) {
+        $post = Post::find($id);
+        return view('user.showPost', ['post'=>$post]);
+    }
+
+    function deletePost($id) {
+       $post_delete = Post::find($id);
+       $post_delete->delete();
+       return redirect()->route("home")->with("message", "Post deleted!");
+    }
+
+    //user
     function userProfile() {
         return view('user.userProfile');
     }
@@ -87,4 +101,6 @@ class PageController extends Controller
             return back()->withErrors($validation);
         }
     }
+
+    
 }

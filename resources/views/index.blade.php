@@ -28,9 +28,9 @@
                     <!-- Title -->
                     <h4 class="card-title">{{$post->title}}</h4>
                     <!-- Text -->
-                    <p class="card-text">{{$post->content}}</p>
+                    {{-- <p class="card-text">{{$post->content}}</p> --}}
                     <!-- Button -->
-                    <a href="#" class="btn btn-primary">Button</a>
+                    <a href="{{ route("showPostById", $post->id) }}" class="btn btn-primary">See More</a>
                 
                     </div>
                 

@@ -36,6 +36,8 @@ Route::middleware('auth')->group(function() {
     Route::get('/user/contactUs', [PageController::class, "contactUs"])->name('contactUs');             //contactUs page
     Route::get('/user/createPost', [PageController::class, "createPost"])->name('createPost');         //createPost page
     Route::post('/user/createPost', [PageController::class, "post"])->name('post');
+    Route::get('user/showPost/{id}', [PageController::class, "showPostById"])->name('showPostById');       //show post detail
+    Route::get('/user/showPost/delete/{id}', [PageController::class, "deletePost"])->name('deletePost');
 
     //admin
     Route::get('/admin/index', [AdminController::class, "index"])->name('admin.index');
