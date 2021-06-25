@@ -31,6 +31,32 @@ class PageController extends Controller
        return redirect()->route("home")->with("message", "Post deleted!");
     }
 
+    //edit post
+    function editPost($id) {
+        $edit_data = Post::find($id);
+        return view('user.edit', ['edit_data'=>$edit_data]);
+    }
+
+    //update post
+    function updatePost($id) {
+        //get input data from edit blade
+        $title = request('title');
+        $image = request('image');
+        $content = request('content');
+
+        $update_data = Post::find($id);
+        $update_data->title = $title;
+        $update_data->content = $content;
+        //image
+        if($image) {
+            $imageName = uniqid()."_".$image->getClientOriginalName();
+            $image->move(public_path('images/posts/'), $imageName);
+            $update_data->image = $imageName;
+        }
+        $update_data->update();
+        return redirect()->route("home")->with('message', 'Post is updated');
+    }
+
     //user
     function userProfile() {
         return view('user.userProfile');

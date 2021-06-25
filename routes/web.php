@@ -37,7 +37,9 @@ Route::middleware('auth')->group(function() {
     Route::get('/user/createPost', [PageController::class, "createPost"])->name('createPost');         //createPost page
     Route::post('/user/createPost', [PageController::class, "post"])->name('post');
     Route::get('user/showPost/{id}', [PageController::class, "showPostById"])->name('showPostById');       //show post detail
-    Route::get('/user/showPost/delete/{id}', [PageController::class, "deletePost"])->name('deletePost');
+    Route::get('/user/showPost/delete/{id}', [PageController::class, "deletePost"])->name('deletePost');    //delete post
+    Route::get('user/edit/{id}', [PageController::class, "editPost"])->name('editPost');
+    Route::post('user/update/{id}', [PageController::class, "updatePost"])->name('updatePost');
 
     //admin
     Route::get('/admin/index', [AdminController::class, "index"])->name('admin.index');

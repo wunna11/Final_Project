@@ -5,7 +5,7 @@
         <h1 class="mt-3">{{ $post->title }}</h1>
         <p class="mt-5">{{ $post->content }}</p>
         <div>
-            <a href="" type="button" class="btn btn-success">Edit</a>
+            <a href="{{ route("editPost", $post->id) }}" type="button" class="btn btn-success">Edit</a>
             <a href="{{ route("deletePost", $post->id) }}" type="button" class="btn btn-danger">Delete</a>
         </div>
     </div>
