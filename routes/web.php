@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,16 +31,20 @@ Route::middleware('auth')->group(function() {
     //home
     Route::get('/', [PageController::class, "index"])->name('home');    
 
-    //user
+    //page or blade file
     Route::get('/user/userProfile', [PageController::class, "userProfile"])->name('userProfile');       //userProfile page
-    Route::post('/user/userProfile', [PageController::class, "post_userProfile"])->name('post_userProfile');
     Route::get('/user/contactUs', [PageController::class, "contactUs"])->name('contactUs');             //contactUs page
     Route::get('/user/createPost', [PageController::class, "createPost"])->name('createPost');         //createPost page
-    Route::post('/user/createPost', [PageController::class, "post"])->name('post');
-    Route::get('user/showPost/{id}', [PageController::class, "showPostById"])->name('showPostById');       //show post detail
-    Route::get('/user/showPost/delete/{id}', [PageController::class, "deletePost"])->name('deletePost');    //delete post
-    Route::get('user/edit/{id}', [PageController::class, "editPost"])->name('editPost');
-    Route::post('user/update/{id}', [PageController::class, "updatePost"])->name('updatePost');
+    Route::get('/edit/{id}', [PageController::class, "editPost"])->name('editPost');
+    Route::get('/post/{id}', [PageController::class, "showPostById"])->name('showPostById');       //show post detail
+
+    //post
+    Route::post('/user/createPost', [PostController::class, "post"])->name('post');
+    Route::get('/post/delete/{id}', [PostController::class, "deletePost"])->name('deletePost');    //delete post
+    Route::post('/update/{id}', [PostController::class, "updatePost"])->name('updatePost');
+
+    //user
+    Route::post('/user/userProfile', [AuthController::class, "post_userProfile"])->name('post_userProfile');    //update userprofile
 
     //admin
     Route::get('/admin/index', [AdminController::class, "index"])->name('admin.index');

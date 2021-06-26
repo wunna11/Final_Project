@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ContactMessage;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -15,6 +16,7 @@ class AdminController extends Controller
     }
 
     function contact_message() {
-        return view('admin.contact_message');
+        $messages = ContactMessage::all();
+        return view('admin.contact_message', ['messages'=>$messages]);
     }
 }
