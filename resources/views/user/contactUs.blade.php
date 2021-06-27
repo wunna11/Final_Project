@@ -8,18 +8,27 @@
             </div>
             <div class="col-md-6">
                 <!-- Default form login -->
-                <form class="text-center border border-light p-5" action="#!">
-
+                <form class="text-center border border-light p-5" action="{{ Route("post_contact_us") }}" method="POST">
+                    @csrf
                     <p class="h4 mb-4">Contact Us</p>
 
                     {{-- Username --}}
-                    <input type="text" class="form-control mb-4" placeholder="Username">
+                    <input type="text" class="form-control mb-4" placeholder="Username" name="username">
+                    @error('username')
+                        <p class="text-danger">{{$message}}</p>
+                    @enderror
 
                     <!-- Email -->
-                    <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+                    <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail" name="email">
+                    @error('email')
+                        <p class="text-danger">{{$message}}</p>
+                    @enderror
 
                     {{-- Message --}}
                     <textarea name="text" id="" cols="30" rows="10" placeholder="Content" class="form-control mb-4"></textarea>
+                    @error('text')
+                        <p class="text-danger">{{$message}}</p>
+                    @enderror
 
                     <!-- Sign in button -->
                     <button class="btn btn-info btn-block my-4" type="submit">Send Message</button>

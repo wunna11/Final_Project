@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
@@ -42,6 +43,9 @@ Route::middleware('auth')->group(function() {
     Route::post('/user/createPost', [PostController::class, "post"])->name('post');
     Route::get('/post/delete/{id}', [PostController::class, "deletePost"])->name('deletePost');    //delete post
     Route::post('/update/{id}', [PostController::class, "updatePost"])->name('updatePost');
+
+    //ContactUsController
+    Route::post('/user/contactUs', [ContactUsController::class, "post_contact_us"])->name('post_contact_us');
 
     //user
     Route::post('/user/userProfile', [AuthController::class, "post_userProfile"])->name('post_userProfile');    //update userprofile
