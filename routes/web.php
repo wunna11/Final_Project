@@ -36,13 +36,13 @@ Route::middleware('auth')->group(function() {
     Route::get('/user/userProfile', [PageController::class, "userProfile"])->name('userProfile');       //userProfile page
     Route::get('/user/contactUs', [PageController::class, "contactUs"])->name('contactUs');             //contactUs page
     Route::get('/user/createPost', [PageController::class, "createPost"])->name('createPost');         //createPost page
-    Route::get('/edit/{id}', [PageController::class, "editPost"])->name('editPost');
-    Route::get('/post/{id}', [PageController::class, "showPostById"])->name('showPostById');       //show post detail
+    Route::get('/user/edit/{id}', [PageController::class, "editPost"])->name('editPost');
+    Route::get('/user/post/{id}', [PageController::class, "showPostById"])->name('showPostById');       //show post detail
 
     //post
     Route::post('/user/createPost', [PostController::class, "post"])->name('post');
     Route::get('/post/delete/{id}', [PostController::class, "deletePost"])->name('deletePost');    //delete post
-    Route::post('/update/{id}', [PostController::class, "updatePost"])->name('updatePost');
+    Route::post('/user/update/{id}', [PostController::class, "updatePost"])->name('updatePost');
 
     //ContactUsController
     Route::post('/user/contactUs/', [ContactUsController::class, "post_contact_us"])->name('post_contact_us');
@@ -56,7 +56,9 @@ Route::middleware('auth')->group(function() {
     //admin
     Route::get('/admin/index', [AdminController::class, "index"])->name('admin.index');
     Route::get('/admin/manage_premium_user', [AdminController::class, "manage_premium_user"])->name('admin.manage_premium_user');
+    Route::get('/admin/manage_premium_user/delete/{id}', [AdminController::class, "deleteUser"])->name('deleteUser');       //delete user
     Route::get('/admin/contact_message', [AdminController::class, "contact_message"])->name('admin.contact_message');
+    
     //logout
     Route::get('/logout', [AuthController::class, "logout"])->name('logout');
 });

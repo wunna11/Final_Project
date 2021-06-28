@@ -7,15 +7,26 @@
             @csrf
             <!-- Title -->
             <label for="">Title</label>
+            @error('title')
+                <p class="text-danger">{{$message}}</p>
+            @enderror
             <input type="text" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="Title" name="title" value="{{$edit_data->title}}">
+            
 
             <!-- Photo -->
             <label for="">Photo</label>
+            @error('image')
+                <p class="text-danger">{{$message}}</p>
+            @enderror
+
             <input type="file" id="defaultLoginFormPassword" class="form-control mb-4" name="image">
             <img src="{{ asset('images/posts/'.$edit_data->image) }}" alt="" width="300px" height="200px"><br>
 
             {{-- Content --}}
             <label for="" class="mt-4">Content</label>
+            @error('content')
+                <p class="text-danger">{{$message}}</p>
+            @enderror
             <textarea name="content" id="" cols="30" rows="10" class="form-control mb-4">{{$edit_data->content}}</textarea>
 
             <!-- Sign in button -->

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ContactMessage;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -12,7 +13,14 @@ class AdminController extends Controller
     }
 
     function manage_premium_user() {
-        return view('admin.manage_premium_user');
+        $users = User::all();
+        return view('admin.manage_premium_user', ['users'=>$users]);
+    }
+
+    function deleteUser($id) {
+        $delete_user = User::find($id);
+        $delete_user->delete();
+        return back()->with('message', "User is deleted");
     }
 
     function contact_message() {

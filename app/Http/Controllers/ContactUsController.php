@@ -44,13 +44,24 @@ class ContactUsController extends Controller
     }
 
     function updateMessage($id) {
-        //find data by id
-        $update_message = ContactMessage::find($id);
-        //override data
-        $update_message->username = request("username");
-        $update_message->email = request("email");
-        $update_message->content = request("text");
-        $update_message->update();
-        return redirect()->route("admin.contact_message", "Message is updated");
+        //validation
+        $validation = request()->validate([
+            "username" => "required",
+            "email" => "required",
+            "text" => "required",
+        ]);
+
+        if($validation) {
+             //find data by id
+            $update_message = ContactMessage::find($id);
+            //override data
+            $update_message->username = request("username");
+            $update_message->email = request("email");
+            $update_message->content = request("text");
+            $update_message->update();
+            return redirect()->route("admin.contact_message", "Message is updated");
+        } else {
+            return back()->withErrors($validation);
+        }
     }
 }

@@ -36,23 +36,34 @@ class PostController extends Controller
 
     //update post
     function updatePost($id) {
-        //get input data from edit blade
-        $title = request('title');
-        $image = request('image');
-        $content = request('content');
+        //validation
+        $validation = request()->validate([
+            "title" => "required",
+            "image" => "required",
+            "content" => "required",
+        ]);
 
-        //update data
-        $update_data = Post::find($id);
-        $update_data->title = $title;
-        $update_data->content = $content;
-        //image
-        if($image) {
-            $imageName = uniqid()."_".$image->getClientOriginalName();
-            $image->move(public_path('images/posts/'), $imageName);
-            $update_data->image = $imageName;
+        if($validation) {
+            //get input data from edit blade
+            $title = request('title');
+            $image = request('image');
+            $content = request('content');
+
+            //update data
+            $update_data = Post::find($id);
+            $update_data->title = $title;
+            $update_data->content = $content;
+            //image
+            if($image) {
+                $imageName = uniqid()."_".$image->getClientOriginalName();
+                $image->move(public_path('images/posts/'), $imageName);
+                $update_data->image = $imageName;
+            }
+            $update_data->update();
+            return redirect()->route("home")->with('message', 'Post is updated');
+        } else {
+            return back()->withErrors($validation);
         }
-        $update_data->update();
-        return redirect()->route("home")->with('message', 'Post is updated');
     }
 
     //delete post
