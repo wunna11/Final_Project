@@ -31,4 +31,26 @@ class ContactUsController extends Controller
             return back()->withErrors($validation);
         }
     }
+
+    function deleteMessage($id) {
+        $delete_message = ContactMessage::find($id);
+        $delete_message->delete();
+        return back()->with("message", "Message is deleted");
+    }
+
+    function editMessage($id) {
+        $edit_message = ContactMessage::find($id);
+        return view('admin.edit_contact_message', ['edit_message'=>$edit_message]);
+    }
+
+    function updateMessage($id) {
+        //find data by id
+        $update_message = ContactMessage::find($id);
+        //override data
+        $update_message->username = request("username");
+        $update_message->email = request("email");
+        $update_message->content = request("text");
+        $update_message->update();
+        return redirect()->route("admin.contact_message", "Message is updated");
+    }
 }

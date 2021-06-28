@@ -45,7 +45,10 @@ Route::middleware('auth')->group(function() {
     Route::post('/update/{id}', [PostController::class, "updatePost"])->name('updatePost');
 
     //ContactUsController
-    Route::post('/user/contactUs', [ContactUsController::class, "post_contact_us"])->name('post_contact_us');
+    Route::post('/user/contactUs/', [ContactUsController::class, "post_contact_us"])->name('post_contact_us');
+    Route::get('/admin/contact_message/edit/{id}', [ContactUsController::class, "editMessage"])->name('editMessage');
+    Route::post('/admin/contact_message/update/{id}', [ContactUsController::class, "updateMessage"])->name('updateMessage');
+    Route::get('/admin/contact_message/delete/{id}', [ContactUsController::class, "deleteMessage"])->name('deleteMessage');
 
     //user
     Route::post('/user/userProfile', [AuthController::class, "post_userProfile"])->name('post_userProfile');    //update userprofile

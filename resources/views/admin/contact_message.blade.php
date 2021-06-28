@@ -18,8 +18,8 @@
               <td>{{$message->username}}</td>
               <td>{{$message->email}}</td>
               <td>{{$message->content}}</td>
-              <td><button type="button" class="btn btn-sm btn-success">Update</button></td>
-              <td><button type="button" class="btn btn-sm btn-danger">Delete</button></td>
+              <td><a href="{{ route("editMessage", $message->id) }}" type="button" class="btn btn-sm btn-success">Update</a></td>
+              <td><a href="{{ route("deleteMessage", $message->id) }}" type="button" class="btn btn-sm btn-danger">Delete</a></td>
             </tr>
           @endforeach
         </tbody>
