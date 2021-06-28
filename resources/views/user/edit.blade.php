@@ -1,6 +1,5 @@
-@extends('layouts.page_layout')
-@section('content')
-    
+<x-page_layout>
+
     <div class="container mt-4">
         <h1 class="mt-5 mb-5">Edit Post</h1>
         <!-- Default form login -->
@@ -25,4 +24,4 @@
         </form>
 <!-- Default form login -->
     </div>
-@endsection
+</x-page_layout>

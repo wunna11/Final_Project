@@ -1,5 +1,4 @@
-@extends('layouts.page_layout')
-@section('content')
+<x-page_layout>
     <div class="container mt-5 text-center">
         <img src="{{ asset('images/posts/'.$post->image) }}" alt="" width="800px" height="500px">
         <h1 class="mt-3">{{ $post->title }}</h1>
@@ -9,4 +8,4 @@
             <a href="{{ route("deletePost", $post->id) }}" type="button" class="btn btn-danger">Delete</a>
         </div>
     </div>
-@endsection
+</x-page_layout>

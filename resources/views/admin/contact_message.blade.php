@@ -1,5 +1,4 @@
-@extends('layouts.admin_layout')
-@section('content')
+<x-admin_layout>
     <h1>Contact Message</h1>
     <table class="table table-hover">
         <thead class="aqua-gradient white-text">
@@ -25,4 +24,4 @@
           @endforeach
         </tbody>
       </table>
-@endsection
+</x-admin_layout>

@@ -1,4 +1,3 @@
-@extends('layouts.admin_layout')
-@section('content')
-    
-@endsection
+<x-admin_layout>
+
+</x-admin_layout>

@@ -1,5 +1,4 @@
-@extends('layouts.auth_layout')
-@section('content')
+<x-auth_layout>
     <div class="container mt-5">
         <div class="col-md-6 offset-3">
             <!-- Material form login -->
@@ -74,4 +73,4 @@
   <!-- Material form login -->
         </div>
     </div>
-@endsection
+</x-auth_layout>

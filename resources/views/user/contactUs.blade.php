@@ -1,5 +1,4 @@
-@extends('layouts.page_layout')
-@section('content')
+<x-page_layout>
     <div class="container-fluid mt-4">
         <div class="row">
             <div class="col-md-6">
@@ -38,4 +37,4 @@
             </div>
         </div>
     </div>
-@endsection
+</x-page_layout>

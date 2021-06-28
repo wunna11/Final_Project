@@ -1,5 +1,4 @@
-@extends('layouts.admin_layout')
-@section('content')
+<x-admin_layout>
     <h1>Manage Premium User</h1>
     <table class="table table-hover">
         <thead class="aqua-gradient white-text">
@@ -26,4 +25,4 @@
           </tr>
         </tbody>
       </table>
-@endsection
+</x-admin_layout>

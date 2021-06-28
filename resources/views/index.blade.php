@@ -1,5 +1,4 @@
-@extends('layouts.page_layout')
-@section('content')
+<x-page_layout>
 <h1>{{ auth()->user()->name }}</h1> 
 {{-- background image --}}
     <header></header>
@@ -41,4 +40,4 @@
             
         </div>
     </div>
-@endsection
+</x-page_layout>
