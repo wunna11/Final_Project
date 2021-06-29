@@ -57,6 +57,8 @@ Route::middleware('auth')->group(function() {
     Route::get('/admin/index', [AdminController::class, "index"])->name('admin.index');
     Route::get('/admin/manage_premium_user', [AdminController::class, "manage_premium_user"])->name('admin.manage_premium_user');
     Route::get('/admin/manage_premium_user/delete/{id}', [AdminController::class, "deleteUser"])->name('deleteUser');       //delete user
+    Route::get('/admin/manage_premium_user/edit/{id}', [AdminController::class, "editUser"])->name('editUser');         //edit user
+    Route::post('/admin/manage_premium_user/update/{id}', [AdminController::class, "updateUser"])->name('updateUser');       //update user
     Route::get('/admin/contact_message', [AdminController::class, "contact_message"])->name('admin.contact_message');
     
     //logout

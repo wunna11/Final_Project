@@ -25,7 +25,7 @@
                     <div class="card-body">
                 
                     <!-- Title -->
-                    <h4 class="card-title">{{$post->title}}</h4>
+                    <h4 class="card-title">{{$post->title}}</h4><p>(post by {{ $post->user->name }})</p>
                     <!-- Text -->
                     {{-- <p class="card-text">{{$post->content}}</p> --}}
                     <!-- Button -->
