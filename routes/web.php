@@ -41,8 +41,8 @@ Route::middleware('auth')->group(function() {
 
     //post
     Route::post('/user/createPost', [PostController::class, "post"])->name('post');
-    Route::get('/post/delete/{id}', [PostController::class, "deletePost"])->name('deletePost');    //delete post
-    Route::post('/user/update/{id}', [PostController::class, "updatePost"])->name('updatePost');
+    Route::get('/post/delete/{id}', [PostController::class, "deletePost"])->name('deletePost')->middleware('premiumUser');    //delete post
+    Route::post('/user/update/{id}', [PostController::class, "updatePost"])->name('updatePost')->middleware('premiumUser');
 
     //ContactUsController
     Route::post('/user/contactUs/', [ContactUsController::class, "post_contact_us"])->name('post_contact_us');
@@ -53,22 +53,24 @@ Route::middleware('auth')->group(function() {
     //logout
     Route::get('/logout', [AuthController::class, "logout"])->name('logout');
 
+    Route::middleware('admin')->group(function() {
+        //admin
+        Route::get('/admin/index', [AdminController::class, "index"])->name('admin.index');
+        Route::get('/admin/manage_premium_user', [AdminController::class, "manage_premium_user"])->name('admin.manage_premium_user');
+        Route::get('/admin/manage_premium_user/delete/{id}', [AdminController::class, "deleteUser"])->name('deleteUser');       //delete user
+        Route::get('/admin/manage_premium_user/edit/{id}', [AdminController::class, "editUser"])->name('editUser');         //edit user
+        Route::post('/admin/manage_premium_user/update/{id}', [AdminController::class, "updateUser"])->name('updateUser');       //update user
+        Route::get('/admin/contact_message', [AdminController::class, "contact_message"])->name('admin.contact_message');
+        //admin.ContactUs Controller
+        Route::get('/admin/contact_message/edit/{id}', [ContactUsController::class, "editMessage"])->name('editMessage');
+        Route::post('/admin/contact_message/update/{id}', [ContactUsController::class, "updateMessage"])->name('updateMessage');
+        Route::get('/admin/contact_message/delete/{id}', [ContactUsController::class, "deleteMessage"])->name('deleteMessage');
+    });
+
 });
 
 
-Route::middleware('admin')->group(function() {
-    //admin
-    Route::get('/admin/index', [AdminController::class, "index"])->name('admin.index');
-    Route::get('/admin/manage_premium_user', [AdminController::class, "manage_premium_user"])->name('admin.manage_premium_user');
-    Route::get('/admin/manage_premium_user/delete/{id}', [AdminController::class, "deleteUser"])->name('deleteUser');       //delete user
-    Route::get('/admin/manage_premium_user/edit/{id}', [AdminController::class, "editUser"])->name('editUser');         //edit user
-    Route::post('/admin/manage_premium_user/update/{id}', [AdminController::class, "updateUser"])->name('updateUser');       //update user
-    Route::get('/admin/contact_message', [AdminController::class, "contact_message"])->name('admin.contact_message');
-    //admin.ContactUs Controller
-    Route::get('/admin/contact_message/edit/{id}', [ContactUsController::class, "editMessage"])->name('editMessage');
-    Route::post('/admin/contact_message/update/{id}', [ContactUsController::class, "updateMessage"])->name('updateMessage');
-    Route::get('/admin/contact_message/delete/{id}', [ContactUsController::class, "deleteMessage"])->name('deleteMessage');
-});
+
 
 
 

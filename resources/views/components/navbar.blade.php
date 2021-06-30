@@ -13,10 +13,11 @@
         </li>
         <li class="nav-item">
         <a class="nav-link" href="{{ route("createPost") }}">Create Post</a>
-        </li>
+        @can('admin')
         <li class="nav-item">
-        <a class="nav-link" href="{{ route("admin.index") }}">Admin Control</a>
-        </li>
+            <a class="nav-link" href="{{ route("admin.index") }}">Admin Control</a>
+            </li>
+        @endcan
         <li class="nav-item">
             <a class="nav-link" href="{{ route("contactUs") }}">Contact Us</a>
         </li>
@@ -31,7 +32,12 @@
         </a>
         <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
             aria-labelledby="navbarDropdownMenuLink-55">
-            <a class="dropdown-item" href="">{{ auth()->user()->name }}</a>
+            @can('admin')
+                <a class="dropdown-item" href="">{{ auth()->user()->name }} (Admin)</a> 
+            @endcan
+            @can('premiumUser')
+                <a class="dropdown-item" href="">{{ auth()->user()->name }} (Premium)</a> 
+            @endcan
             <a class="dropdown-item" href="{{ route("userProfile") }}">User Profile</a>
             <a class="dropdown-item" href="{{ route("logout") }}">Logout</a>
         </div>
