@@ -46,13 +46,17 @@ Route::middleware('auth')->group(function() {
 
     //ContactUsController
     Route::post('/user/contactUs/', [ContactUsController::class, "post_contact_us"])->name('post_contact_us');
-    Route::get('/admin/contact_message/edit/{id}', [ContactUsController::class, "editMessage"])->name('editMessage');
-    Route::post('/admin/contact_message/update/{id}', [ContactUsController::class, "updateMessage"])->name('updateMessage');
-    Route::get('/admin/contact_message/delete/{id}', [ContactUsController::class, "deleteMessage"])->name('deleteMessage');
-
+    
     //user
     Route::post('/user/userProfile', [AuthController::class, "post_userProfile"])->name('post_userProfile');    //update userprofile
 
+    //logout
+    Route::get('/logout', [AuthController::class, "logout"])->name('logout');
+
+});
+
+
+Route::middleware('admin')->group(function() {
     //admin
     Route::get('/admin/index', [AdminController::class, "index"])->name('admin.index');
     Route::get('/admin/manage_premium_user', [AdminController::class, "manage_premium_user"])->name('admin.manage_premium_user');
@@ -60,11 +64,11 @@ Route::middleware('auth')->group(function() {
     Route::get('/admin/manage_premium_user/edit/{id}', [AdminController::class, "editUser"])->name('editUser');         //edit user
     Route::post('/admin/manage_premium_user/update/{id}', [AdminController::class, "updateUser"])->name('updateUser');       //update user
     Route::get('/admin/contact_message', [AdminController::class, "contact_message"])->name('admin.contact_message');
-    
-    //logout
-    Route::get('/logout', [AuthController::class, "logout"])->name('logout');
+    //admin.ContactUs Controller
+    Route::get('/admin/contact_message/edit/{id}', [ContactUsController::class, "editMessage"])->name('editMessage');
+    Route::post('/admin/contact_message/update/{id}', [ContactUsController::class, "updateMessage"])->name('updateMessage');
+    Route::get('/admin/contact_message/delete/{id}', [ContactUsController::class, "deleteMessage"])->name('deleteMessage');
 });
-
 
 
 

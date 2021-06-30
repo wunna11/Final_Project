@@ -39,6 +39,11 @@
             let msg = "{{Session("message")}}";
             toastr.success(msg);
         @endif
+
+        @if(Session("error"))
+            let msg = "{{Session("error")}}";
+            toastr.error(msg);
+        @endif
     </script>
 </body>
 </html>
