@@ -17,7 +17,7 @@
                         @csrf
                         <div class="md-form">
                                 <!-- First name -->
-                            <input type="text" class="form-control" name="username">
+                            <input type="text" class="form-control" name="username" value="{{old('username')}}">
                             @error('username')
                                 <p class="text-danger">{{$message}}</p>
                             @enderror
@@ -26,7 +26,7 @@
 
                         <!-- E-mail -->
                         <div class="md-form mt-0">
-                            <input type="email" id="materialRegisterFormEmail" class="form-control" name="email">
+                            <input type="email" id="materialRegisterFormEmail" class="form-control" name="email" value="{{old('email')}}">
                             @error('email')
                                 <p class="text-danger">{{$message}}</p>
                             @enderror
@@ -40,6 +40,15 @@
                                 <p class="text-danger">{{$message}}</p>
                             @enderror
                             <label for="materialRegisterFormPassword">Password</label>
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="md-form">
+                            <input type="password" id="materialRegisterFormPassword" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock" name="password_confirmation">
+                            @error('password_confirmation')
+                                <p class="text-danger">{{$message}}</p>
+                            @enderror
+                            <label for="materialRegisterFormPassword">Confirmation Password</label>
                         </div>
 
                         <label for="">Select Your Profile Picture</label>

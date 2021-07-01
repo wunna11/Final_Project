@@ -4,8 +4,10 @@
         <h1 class="mt-3">{{ $post->title }}</h1>
         <p class="mt-5">{{ $post->content }}</p>
         <div>
-            <a href="{{ route("editPost", $post->id) }}" type="button" class="btn btn-success">Edit</a>
-            <a href="{{ route("deletePost", $post->id) }}" type="button" class="btn btn-danger">Delete</a>
+            @can('adminPremiumPostowner', $post->id)
+                <a href="{{ route("editPost", $post->id) }}" type="button" class="btn btn-success">Edit</a>
+                <a href="{{ route("deletePost", $post->id) }}" type="button" class="btn btn-danger">Delete</a>
+            @endcan
         </div>
     </div>
 </x-page_layout>

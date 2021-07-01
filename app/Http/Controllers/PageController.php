@@ -11,7 +11,7 @@ class PageController extends Controller
 {
     //post 
     function index() {
-        $posts = Post::latest()->get();         //order by id desecnding
+        $posts = Post::latest()->paginate(9);         //order by id desecnding
         return view('index', ['posts' => $posts]);          //view(blade file, array)
     }
 
